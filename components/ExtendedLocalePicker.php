@@ -27,8 +27,9 @@ class ExtendedLocalePicker extends LocalePicker
 
     public function onRun()
     {
-        $this->page['activeLocale'] = $this->activeLocale = $this->translator->getLocale();
         $this->page['locales'] = $this->locales = LocaleModel::listEnabled();
+        $this->page['activeLocale'] = $this->activeLocale = $this->translator->getLocale();
+        $this->page['activeLocaleName'] = $this->activeLocaleName = array_get($this->locales, $this->activeLocale);
         $this->page['localeLinks'] = $this->makeLinks($this->locales);
     }
 
